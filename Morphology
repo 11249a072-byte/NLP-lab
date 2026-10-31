@@ -1,0 +1,27 @@
+Aim: 
+To identify the stem or root form of words using Porter Stemmer.
+
+Algorithm:
+1. Start the program.
+2. Import the Porter Stemmer module from NLTK.
+3. Create a list of words.
+4. Apply stemming to each word.
+5. Display the original word and its stem.
+6. Stop the program.
+
+program:
+from nltk.stem import PorterStemmer
+ps = PorterStemmer()
+words = ["playing", "played", "plays", "running", "happily"]
+for word in words:
+    print(word, "->", ps.stem(word))
+
+out put:
+playing -> play
+played -> play
+plays -> play
+running -> run
+happily -> happili
+
+Result:
+Thus, the stem of each word is identified using Porter Stemmer.
