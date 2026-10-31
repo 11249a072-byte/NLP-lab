@@ -1,0 +1,42 @@
+Aim: To calculate the bigram probability using Laplace (Add-One) smoothing.
+
+Algorithm:
+1. Start the program.
+2. Define a sample sentence.
+3. Split the sentence into words.
+4. Count the words and bigrams.
+5. Read the first and next word from the user.
+6. Apply the Laplace smoothing formula.
+7. Display the smoothed probability.
+8. Stop the program.
+Formula:
+P(w_2|w_1)=\frac{C(w_1,w_2)+1}{C(w_1)+V}
+
+Where \(C(w_1,w_2)\) is the bigram count, \(C(w_1)\) is the count of the first word, and \(V\) is the vocabulary size.
+
+Program:
+
+from collections import Counter
+sentence = "i love nlp i love python"
+words = sentence.split()
+bigrams = list(zip(words[:-1], words[1:]))
+bigram_count = Counter(bigrams)
+word_count = Counter(words)
+word1 = input("Enter first word: ")
+word2 = input("Enter next word: ")
+V = len(word_count)
+count = bigram_count[(word1, word2)]
+total = word_count[word1]
+probability = (count + 1) / (total + V)
+print("Bigram count:", count)
+print("Smoothed probability:", probability)
+
+Out put:
+Enter first word: i
+Enter next word: love
+Bigram count: 2
+Smoothed probability: 0.5
+
+Result: 
+Thus, the bigram probability is calculated using Laplace smoothing
+
