@@ -1,0 +1,31 @@
+Aim :
+  To perform word analysis using Python and the NLTK library by tokenizing text, removing stop words, analyzing word frequency, and applying stemming. 
+ Algorithm 
+1. Import the required NLTK libraries.  
+2. Download the necessary NLTK datasets.
+3. Read the input sentence from the user.
+4. Convert the text into lowercase.
+5. Tokenize the sentence into words.
+6. Remove punctuation and English stop words.
+7. Apply stemming to each remaining word.
+8. Calculate the frequency of each word.
+9. Display the tokens, filtered words, stemmed words, and word frequencies.   
+
+program:
+text = input("Enter a sentence: ")
+words = text.split()
+print("Words:", words)
+print("Number of words:", len(words))
+print("Number of characters:", len(text))
+for word in words:
+    print(word, ":", len(word), "characters")
+Sample Output:
+Enter a sentence: NLP is interesting
+Words: ['NLP', 'is', 'interesting']
+Number of words: 3
+Number of characters: 19
+NLP : 3 characters
+is : 2 characters
+interesting : 11 characters
+Result: 
+Thus, the sentence is analyzed and its words and counts are displayed.
