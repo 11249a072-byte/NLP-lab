@@ -1,0 +1,38 @@
+Aim: 
+To build a chunker that identifies noun phrases automatically from an input sentence.
+
+Algorithm:
+1. Start the program.
+2. Import the NLTK library.
+3. Read a sentence from the user.
+4. Tokenize the sentence into words.
+5. Apply POS tagging.
+6. Define the noun phrase grammar.
+7. Create a chunk parser.
+8. Parse the tagged sentence and display the result.
+9. Stop the program.
+
+Program:
+import nltk
+text = input("Enter a sentence: ")
+words = nltk.word_tokenize(text)
+tagged_words = nltk.pos_tag(words)
+grammar = "NP: {<DT>?<JJ>*<NN.*>}"
+chunker = nltk.RegexpParser(grammar)
+result = chunker.parse(tagged_words)
+print("POS Tagged Words:")
+print(tagged_words)
+print("Chunked Sentence:")
+print(result)
+result.pretty_print()
+
+Sample Output:
+Enter a sentence: The small dog runs
+POS Tagged Words:
+[('The', 'DT'), ('small', 'JJ'),
+ ('dog', 'NN'), ('runs', 'VBZ')]
+Chunked Sentence:
+(S (NP The/DT small/JJ dog/NN) runs/VBZ)
+
+Result:
+Thus, a chunker is built to identify noun phrases in a sentence.
