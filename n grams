@@ -1,0 +1,35 @@
+Aim:
+To generate unigram, bigram, and trigram sequences from a sentence.
+
+Algorithm:
+1. Start the program.
+2. Read a sentence from the user.
+3. Split the sentence into words.
+4. Generate unigrams containing one word.
+5. Generate bigrams containing two consecutive words.
+6. Generate trigrams containing three consecutive words.
+7. Display all the n-grams.
+8. Stop the program.
+
+program :
+from nltk import ngrams
+text = input("Enter a sentence: ")
+words = text.split()
+print("Unigrams:")
+print(list(ngrams(words, 1)))
+print("Bigrams:")
+print(list(ngrams(words, 2)))
+print("Trigrams:")
+print(list(ngrams(words, 3)))
+
+out put:
+Enter a sentence: I love NLP
+Unigrams:
+[('I',), ('love',), ('NLP',)]
+Bigrams:
+[('I', 'love'), ('love', 'NLP')]
+Trigrams:
+[('I', 'love', 'NLP')]
+
+Result:
+Thus, unigram, bigram, and trigram sequences are generated.
