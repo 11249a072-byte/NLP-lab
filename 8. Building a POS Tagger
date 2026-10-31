@@ -1,0 +1,30 @@
+Aim: 
+To build a POS tagger using the NLTK library.
+
+Algorithm:
+1. Start the program.
+2. Import the NLTK library.
+3. Read a sentence from the user.
+4. Tokenize the sentence into words.
+5. Apply the POS tagging function.
+6. Display each word and its POS tag.
+7. Stop the program.
+
+Program:
+import nltk
+text = input("Enter a sentence: ")
+words = nltk.word_tokenize(text)
+tags = nltk.pos_tag(words)
+print("POS Tags:")
+for word, tag in tags:
+    print(word, "->", tag)
+
+Output:
+Enter a sentence: The dog runs
+POS Tags:
+The -> DT
+dog -> NN
+runs -> VBZ
+
+Result: 
+Thus, a POS tagger is built to identify the grammatical category of each word.
