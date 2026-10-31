@@ -1,0 +1,57 @@
+Aim:
+To find the most probable sequence of POS tags using the Viterbi algorithm.
+
+Algorithm:
+1. Start the program.
+2. Define the states and probabilities.
+3. Initialize the probability of each state for the first word.
+4. For each remaining word, calculate the probability of reaching every state from the previous states.
+5. Store the highest probability and its previous state.
+6. Select the final state with the highest probability.
+7. Trace back the stored path.
+8. Display the best sequence of POS tags.
+9. Stop the program.
+
+Program:
+states = ["Noun", "Verb"]
+words = ["dogs", "bark"]
+start = {"Noun": 0.6, "Verb": 0.4}
+emission = {
+    "Noun": {"dogs": 0.8, "bark": 0.1},
+    "Verb": {"dogs": 0.1, "bark": 0.8}
+}
+transition = {
+    "Noun": {"Noun": 0.3, "Verb": 0.7},
+    "Verb": {"Noun": 0.6, "Verb": 0.4}
+}
+viterbi = {}
+path = {}
+for state in states:
+    viterbi[state] = (
+        start[state] * emission[state].get(words[0], 0)
+    )
+    path[state] = [state]
+for word in words[1:]:
+    new_viterbi = {}
+    new_path = {}
+    for state in states:
+        choices = [
+            (
+                viterbi[prev]
+                * transition[prev][state]
+                * emission[state].get(word, 0),
+                prev
+            )
+            for prev in states
+        ]
+        probability, previous = max(choices)
+        new_viterbi[state] = probability
+        new_path[state] = path[previous] + [state]
+    viterbi = new_viterbi
+    path = new_path
+best_state = max(viterbi, key=viterbi.get)
+print("Words:", words)
+print("Best POS tags:", path[best_state])
+
+Result: 
+Thus, the most probable sequence of POS tags is found using Viterbi decoding
