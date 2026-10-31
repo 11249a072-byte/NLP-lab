@@ -1,0 +1,50 @@
+Aim:
+To assign parts-of-speech tags to words using a simple Hidden Markov Model.
+
+Algorithm:
+1. Start the program.
+2. Define the possible POS states.
+3. Define the start, transition, and emission probabilities.
+4. Take the input words.
+5. Calculate the probability of each possible state.
+6. Select the state with the highest probability at each step.
+7. Display the words and their POS tags.
+8. Stop the program.
+
+Program:
+states = ["Noun", "Verb"]
+start = {
+    "Noun": 0.6,
+    "Verb": 0.4
+}
+emission = {
+    "Noun": {"dogs": 0.8, "bark": 0.1},
+    "Verb": {"dogs": 0.1, "bark": 0.8}
+}
+transition = {
+    "Noun": {"Noun": 0.3, "Verb": 0.7},
+    "Verb": {"Noun": 0.6, "Verb": 0.4}
+}
+words = ["dogs", "bark"]
+previous = None
+for word in words:
+    best_state = None
+    best_probability = -1
+    for state in states:
+        if previous is None:
+            probability = (
+                start[state] * emission[state].get(word, 0)
+            )
+        else:
+            probability = (
+                transition[previous][state]
+                * emission[state].get(word, 0)
+            )
+        if probability > best_probability:
+            best_probability = probability
+            best_state = state
+    print(word, "->", best_state)
+    previous = best_state
+
+Result: 
+Thus, POS tags are assigned using start, transition, and emission probabilities
