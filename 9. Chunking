@@ -1,0 +1,33 @@
+Aim: 
+To identify noun phrases in a sentence using chunking.
+
+Algorithm:
+1. Start the program.
+2. Define a sentence with POS tags.
+3. Create a grammar rule for noun phrases.
+4. Create a regular-expression chunk parser.
+5. Apply the parser to the tagged sentence.
+6. Display the chunked output.
+7. Stop the program.
+
+Program:
+import nltk
+sentence = [
+    ("The", "DT"),
+    ("small", "JJ"),
+    ("dog", "NN"),
+    ("runs", "VBZ")
+]
+grammar = "NP: {<DT>?<JJ>*<NN>}"
+parser = nltk.RegexpParser(grammar)
+tree = parser.parse(sentence)
+print(tree)
+tree.pretty_print()
+
+Output:
+(S
+  (NP The/DT small/JJ dog/NN)
+  runs/VBZ)
+
+Result: 
+Thus, the noun phrase is identified using a regular-expression chunk parser
